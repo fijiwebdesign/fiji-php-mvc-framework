@@ -129,11 +129,11 @@ class Gallery extends Controller
   public function index()
   {
     // retrieves all the galleries in storage
-    $GalleryList = Factory::createModelCollection('gallery');
-    $GalleryList->find();
+    $GalleryList = Factory::createModelCollection('gallery')
+      ->find();
 
-    $this->View->set('GalleryList ', $GalleryList );
-    $this->View->display('list');
+    $this->View->set('GalleryList ', $GalleryList )      
+      ->display('list');
   }
 
   /**
@@ -141,7 +141,7 @@ class Gallery extends Controller
    */
   public function create()
   {
-    $model = Factory::createModel('gallery');
+    $model = Factory::createModel('gallery')
 
     $model->title = 'Cool Gallery';
     $model->description = 'Nice Description';
@@ -160,12 +160,12 @@ class Gallery extends Controller
   {
     $id = Factory::getRequest()->getInt('id');
 
-    $model = Factory::createModel('gallery');
-    $model->findById($id);
+    $model = Factory::createModel('gallery')
+      ->findById($id);
     
-    $view = Factory::createView('gallery');
-    $view->set('model', $model);
-    $view->display();
+    $view = Factory::createView('gallery')
+      ->set('model', $model)
+      ->display();
 
   }
 
@@ -176,11 +176,10 @@ class Gallery extends Controller
   { 
     $id = Factory::getRequest()->getInt('id');
 
-    $model = Factory::createModel('gallery');
-    $model->findById($id);
-
-    $model->title = 'New Title';
-    $model->save();
+    $model = Factory::createModel('gallery')
+      ->findById($id)
+      ->setData(array('title' => 'New Title'))
+      ->save();
 
     Factory::getApp()->redirect('gallery/view/' . $id);
 
