@@ -78,9 +78,11 @@ $id = $Message->save(); // 1
 
 Now in your storage you have the Message you just created, with the Sender being a reference to the logged in User Model and the Recipients being a reference to the ModelCollection of Users in the Sender's team. 
 
-If you have an SQL storage then these would be a table called Message with a new entry. 
-A sender_id referencing the Sender entry in the Users table in a one to many relation. 
-A separate table called message_user which maps the Message to the list of Users in a Many to Many relation. 
+* If you have an SQL storage then these would be a table called Message with a new entry. 
+* A sender_id referencing the Sender entry in the Users table in a one to many relation. 
+* A separate table called message_user which maps the Message to the list of Users in a Many to Many relation. 
+* All this without creating any sql tables or defining relations.
+* You can add any Storage interface by creating a new DataProvider class to manage it. 
 
 This persists the state of your $Message object so the next time you retrieve it all the references are lazy loaded when you ask for them. 
 
