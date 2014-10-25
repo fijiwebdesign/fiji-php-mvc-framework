@@ -192,13 +192,16 @@ class Gallery extends Controller
 
 
 Main aims
-Every piece of the MVC layer dependencies is an interface. ie. can be overridden or replaced with no effect on other parts.
-Developer does not care about storage or caching. ie. use storage agnostic models.
-Developer should not need to define schema/structure of storage/models up front. Models build their own structure in storage on saving. (Don't worry, you can tweak it later)
-Developer should never worry about where classes are (never require() a file)
-UI should not be a concern to developer so they can quickly prototype (eg. Bootstrap)
-Developer should be able to write a simple application in 5 minutes (see example)
-Current achieved goals
+---------
+
+* Every piece of the MVC layer dependencies is an interface. ie. can be overridden or replaced with no effect on other parts.
+* Developer does not care about storage or caching. ie. use storage agnostic models.
+* Developer should not need to define schema/structure of storage/models up front. Models build their own structure in storage on saving. (Don't worry, you can tweak it later)
+* Developer should never worry about where classes are (never require() a file)
+* UI should not be a concern to developer so they can quickly prototype (eg. Bootstrap)
+* Developer should be able to write a simple application in 5 minutes (see example)
+
+###Current achieved goals###
 Most of the MVC layer can be replaced or overridden by your application.
 
 All classes are namespaced (PHP 5.3+) and loaded via Factory pattern. Currently this is via static methods but may change for easier testing.
